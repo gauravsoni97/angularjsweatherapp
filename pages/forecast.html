@@ -1,0 +1,35 @@
+<div>
+  <a href="#!/">Back to serch</a>
+</div>
+<br />
+
+<h1>Forcast for: {{city}}</h1>
+<hr />
+
+<ul style="display: flex; gap: 1rem">
+  <h1>Forcast Days</h1>
+  <li>
+    <a
+      ng-class="{ 'bg-blue-500 px-4 rounded': isActive('/forecast/3') }"
+      href="#!/forecast/3"
+      >3</a
+    >
+    <a
+      ng-class="{ 'bg-blue-500 px-4 rounded': isActive('/forecast/5') }"
+      href="#!/forecast/5"
+      >5</a
+    >
+    <a
+      ng-class="{ 'bg-blue-500 px-4 rounded': isActive('/forecast/7') }"
+      href="#!/forecast/7"
+      >7</a
+    >
+  </li>
+</ul>
+
+<hr />
+
+<div ng-repeat="w in weatherResult.list">
+  <div>Date: {{w.dt | date: "MMM d, y"}}</div>
+  <div>Day Time Temprature: {{convertToFahrenheit(w.main.temp)}}</div>
+</div>
