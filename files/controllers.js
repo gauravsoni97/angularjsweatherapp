@@ -10,15 +10,24 @@ weatherApp.controller("NavController", [
       };
     },
   ]);
+
+
   
   weatherApp.controller("HomeController", [
     "$scope",
+    "$location",
     "cityService",
-    function ($scope, cityService) {
+    function ($scope, $location, cityService) {
       $scope.city = cityService.city;
       $scope.$watch("city", function () {
         cityService.city = $scope.city;
       });
+
+      $scope.search = function() {
+        if ($scope.city) {
+          $location.path('/forecast'); // Change the path if input is not empty
+        }
+      };
     },
   ]);
   
