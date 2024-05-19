@@ -25,7 +25,7 @@ weatherApp.controller("NavController", [
 
       $scope.search = function() {
         if ($scope.city) {
-          $location.path('/forecast'); // Change the path if input is not empty
+          $location.path('/forecast/2');
         }
       };
     },
@@ -39,7 +39,7 @@ weatherApp.controller("NavController", [
     "cityService",
     function ($scope, $http, $routeParams, $location, cityService) {
       $scope.city = cityService.city;
-      $scope.days = $routeParams.days || 2;
+      $scope.days = $routeParams.days || "2";
       $scope.isActive = function (viewLocation) {
         return viewLocation === $location.path();
       };
