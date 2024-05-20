@@ -22,7 +22,7 @@ weatherApp.controller("HomeController", [
 
     $scope.search = function () {
       if ($scope.city) {
-        $location.path("/forecast/2");
+        $location.path("/forecast");
       }
     };
   },
@@ -36,7 +36,7 @@ weatherApp.controller("ForecastController", [
   "cityService",
   function ($scope, $http, $routeParams, $location, cityService) {
     $scope.city = cityService.city;
-    $scope.days = $routeParams.days || "2";
+    $scope.days = $routeParams.days || "10000";
     $scope.isActive = function (viewLocation) {
       return viewLocation === $location.path();
     };
