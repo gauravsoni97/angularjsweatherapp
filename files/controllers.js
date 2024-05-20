@@ -36,7 +36,7 @@ weatherApp.controller("ForecastController", [
   "cityService",
   function ($scope, $http, $routeParams, $location, cityService) {
     $scope.city = cityService.city;
-    $scope.days = $routeParams.days || "10000";
+    $scope.days = $routeParams.days || "1";
     $scope.isActive = function (viewLocation) {
       return viewLocation === $location.path();
     };
