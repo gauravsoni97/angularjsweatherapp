@@ -39,8 +39,8 @@
   <br />
 
   <ul
-    class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
-  >
+    class="flex flex-wrap items-end text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 "
+  > 
     <li class="me-2">
       <a
         class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300"
@@ -73,9 +73,29 @@
         >9 Days</a
       >
     </li>
+    <li class="me-2 ms-6 flex flex-col items-start">
+      <label for="startDate" >Start Date</label>
+      <input
+      type="date"
+      id="startDate"
+      class="block w-[150px] py-4 ps-2 text-sm text-gray-900 rounded-t-lg dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+      placeholder="Start"
+      required
+      />
+    </li>
+    <li class="me-2 flex flex-col items-start">
+      <label for="endDate">End Date</label>
+      <input
+        type="date"
+        id="endDate"
+        class="block w-[150px] py-4 ps-2 text-sm text-gray-900 rounded-t-lg dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+        placeholder="End"
+        required
+      />
+    </li>
   </ul>
 
-  <hr />
+  <hr class="h-1px  bg-gray-200 border-0 dark:bg-gray-700">
 
   <ol
     class="relative border-s border-gray-200 dark:border-gray-700"
@@ -99,7 +119,7 @@
       <h3 class="text-md font-semibold text-gray-900 dark:text-white">
         Min Temprature: {{convertToFahrenheit(w.main.temp_min)}} °C
       </h3>
-      <h3 class="text-md italic  text-gray-900 dark:text-white">
+      <h3 class="text-md italic text-gray-900 dark:text-white">
         Weather: {{w.weather[0].description}}
       </h3>
     </li>
