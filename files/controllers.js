@@ -35,7 +35,7 @@ weatherApp.controller("ForecastController", [
   "$location",
   "cityService",
   function ($scope, $http, $routeParams, $location, cityService) {
-    $scope.city = localStorage.getItem('savedCity') || cityService.city;
+    $scope.city = cityService.city;
     $scope.days = $routeParams.days || 5; // Get the number of days from URL parameter
     $scope.itemsPerPage = $routeParams.days || 5; 
     $scope.isActive = function (viewLocation) {
@@ -56,6 +56,7 @@ weatherApp.controller("ForecastController", [
         })
         .then(function (response) {
           $scope.weatherResult = response.data;
+         
           console.log($scope.weatherResult);
           console.log($scope.weatherResult.city.name);
         })
@@ -70,7 +71,6 @@ weatherApp.controller("ForecastController", [
 
 
     $scope.search = function() {
-      localStorage.setItem('savedCity', $scope.city);
       $location.path("/forecast" + $scope.days); 
       $scope.changeItemsPerPage(); 
     };
