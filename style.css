@@ -3,7 +3,12 @@ body {
   color: white;
 }
 
-
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
 /* width */
 ::-webkit-scrollbar {
   width: 5px;

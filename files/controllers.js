@@ -35,28 +35,45 @@ weatherApp.controller("ForecastController", [
   "$location",
   "cityService",
   function ($scope, $http, $routeParams, $location, cityService) {
-    $scope.city = cityService.city;
-    $scope.days = $routeParams.days || "1";
+    $scope.city = localStorage.getItem('savedCity') || cityService.city;
+    $scope.days = $routeParams.days;
+    $scope.itemsPerPage = 5;
     $scope.isActive = function (viewLocation) {
       return viewLocation === $location.path();
     };
 
-    $http
-      .get("https://api.openweathermap.org/data/2.5/forecast", {
-        params: {
-          q: $scope.city,
-          cnt: $scope.days,
-          appid: "129c1c964554ef266954e2df1f56acbe",
-        },
-      })
-      .then(function (response) {
-        $scope.weatherResult = response.data;
-        console.log($scope.weatherResult);
-        console.log($scope.weatherResult.city.name);
-      })
-      .catch(function (error) {
-        console.error("Error fetching weather data:", error);
-      });
+    // Function to handle change in items per page
+    $scope.changeItemsPerPage = function () {
+      // Fetch data based on the selected number of items per page
+      $http
+        .get("https://api.openweathermap.org/data/2.5/forecast", {
+          params: {
+            q: $scope.city,
+            cnt: $scope.days,
+            appid: "129c1c964554ef266954e2df1f56acbe",
+            cnt: $scope.itemsPerPage,
+          },
+        })
+        .then(function (response) {
+          $scope.weatherResult = response.data;
+          console.log($scope.weatherResult);
+          console.log($scope.weatherResult.city.name);
+        })
+        .catch(function (error) {
+          console.error("Error fetching weather data:", error);
+        });
+    };
+
+
+
+    $scope.changeItemsPerPage();
+
+
+    $scope.search = function() {
+      localStorage.setItem('savedCity', $scope.city);
+      $location.path("/forecast"); 
+      $scope.changeItemsPerPage(); 
+    };
 
     $scope.convertToFahrenheit = function (degk) {
       return (degk - 273).toFixed(2);
