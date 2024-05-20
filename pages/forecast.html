@@ -91,9 +91,15 @@
       >
 
       <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-        Temprature: {{convertToFahrenheit(w.main.temp)}} F
+        Current Temprature: {{convertToFahrenheit(w.main.temp)}} °C
       </h3>
-      <h3 class="text-md italic font-semibold text-gray-900 dark:text-white">
+      <h3 class="text-md font-semibold text-gray-900 dark:text-white">
+        Max Temprature: {{convertToFahrenheit(w.main.temp_max)}} °C
+      </h3>
+      <h3 class="text-md font-semibold text-gray-900 dark:text-white">
+        Min Temprature: {{convertToFahrenheit(w.main.temp_min)}} °C
+      </h3>
+      <h3 class="text-md italic  text-gray-900 dark:text-white">
         Weather: {{w.weather[0].description}}
       </h3>
     </li>
