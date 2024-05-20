@@ -6,22 +6,21 @@ body {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 5px;
 }
-/* 
+
 /* Track */
 ::-webkit-scrollbar-track {
-  border-radius: 10px;
-  background: rgb(42, 47, 68); 
-} */
+  background-color: rgb(75, 75, 75);
+}
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(51, 56, 87); 
+  background: rgb(118, 121, 126); 
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #353535; 
+  background: #8a8a8a; 
 }
