@@ -15,7 +15,12 @@ weatherApp.controller("HomeController", [
   "$location",
   "cityService",
   function ($scope, $location, cityService) {
-    $scope.city = cityService.city;
+     $scope.city = localStorage.getItem("city") || cityService.city;
+     $scope.$watch("city", function (newValue, oldValue) {
+       if (newValue !== oldValue) {
+         localStorage.setItem("city", newValue || '');
+       }
+     });
     $scope.$watch("city", function () {
       cityService.city = $scope.city;
     });
