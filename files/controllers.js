@@ -51,9 +51,9 @@ weatherApp.controller("ForecastController", [
         .get("https://api.openweathermap.org/data/2.5/forecast", {
           params: {
             q: $scope.city,
-            cnt: $scope.days,
+            cnt: 50,
             appid: "129c1c964554ef266954e2df1f56acbe",
-            cnt: $scope.itemsPerPage,
+            // cnt: $scope.itemsPerPage,
           },
         })
         .then(function (response) {
