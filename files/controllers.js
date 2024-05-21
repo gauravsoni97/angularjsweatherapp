@@ -36,15 +36,17 @@ weatherApp.controller("ForecastController", [
   "cityService",
   function ($scope, $http, $routeParams, $location, cityService) {
     $scope.city = cityService.city;
-    $scope.days = $routeParams.days || 5; // Get the number of days from URL parameter
+    $scope.days = $routeParams.days || 5; 
     $scope.itemsPerPage = $routeParams.days || 5; 
     $scope.isActive = function (viewLocation) {
       return viewLocation === $location.path();
     };
 
-    // Function to handle change in items per page
+    $scope.startDate = "";
+    $scope.endDate = ""; 
+
+
     $scope.changeItemsPerPage = function () {
-      // Fetch data based on the selected number of items per page
       $http
         .get("https://api.openweathermap.org/data/2.5/forecast", {
           params: {
@@ -56,9 +58,13 @@ weatherApp.controller("ForecastController", [
         })
         .then(function (response) {
           $scope.weatherResult = response.data;
+
+          $scope.filteredWeatherResult = $scope.weatherResult.list.filter(function (item) {
+            var itemDate = new Date(item.dt * 1000);
+            return itemDate >= $scope.startDate && itemDate <= $scope.endDate;
+          });
          
           console.log($scope.weatherResult);
-          console.log($scope.weatherResult.city.name);
         })
         .catch(function (error) {
           console.error("Error fetching weather data:", error);

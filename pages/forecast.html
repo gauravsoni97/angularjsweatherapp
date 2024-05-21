@@ -81,18 +81,20 @@
         class="block w-[150px] py-4 ps-2 text-sm text-gray-900 rounded-t-lg dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
         placeholder="Start"
         required
-      />
-    </li>
+        ng-model="startDate"
+        />
+      </li>
     <li class="me-2 flex flex-col items-start">
       <label for="endDate">End Date</label>
       <input
-        type="date"
-        id="endDate"
+      type="date"
+      id="endDate"
         class="block w-[150px] py-4 ps-2 text-sm text-gray-900 rounded-t-lg dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
         placeholder="End"
         required
-      />
-    </li>
+        ng-model="endDate"
+        />
+      </li>
   </ul>
 
   <hr class="h-1px bg-gray-200 border-0 dark:bg-gray-700" />
